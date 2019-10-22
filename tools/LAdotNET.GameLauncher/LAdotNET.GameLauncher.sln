@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29318.209
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LAdotNET.GameLauncher", "LAdotNET.GameLauncher\LAdotNET.GameLauncher.csproj", "{43589F7C-548F-42F4-8C50-24BF18683DE8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43589F7C-548F-42F4-8C50-24BF18683DE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43589F7C-548F-42F4-8C50-24BF18683DE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43589F7C-548F-42F4-8C50-24BF18683DE8}.Debug|x64.ActiveCfg = Debug|x64
+		{43589F7C-548F-42F4-8C50-24BF18683DE8}.Debug|x64.Build.0 = Debug|x64
+		{43589F7C-548F-42F4-8C50-24BF18683DE8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{43589F7C-548F-42F4-8C50-24BF18683DE8}.Debug|x86.Build.0 = Debug|Any CPU
+		{43589F7C-548F-42F4-8C50-24BF18683DE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43589F7C-548F-42F4-8C50-24BF18683DE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43589F7C-548F-42F4-8C50-24BF18683DE8}.Release|x64.ActiveCfg = Release|x64
+		{43589F7C-548F-42F4-8C50-24BF18683DE8}.Release|x64.Build.0 = Release|x64
+		{43589F7C-548F-42F4-8C50-24BF18683DE8}.Release|x86.ActiveCfg = Release|Any CPU
+		{43589F7C-548F-42F4-8C50-24BF18683DE8}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B4F52B2A-1866-4C04-90FC-1B619DC0F756}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,5 @@
+ServerIP:  127.0.0.1
+ServerPort: 6010
+
+#ClientVersion: .1.275.308.865356(CL:865356) (2019-10-1 5:1:24) this worked with 1.6????
+ClientVersion: 1.284.314.875818(CL:875818) (2019-10-15 19:20:52)

@@ -1,0 +1,10 @@
+# the list of servers that appears during login
+ServerList:
+  - Id: 1
+    Name: LAdotNET
+    Ip: 127.0.0.1
+    Port: 6020
+  - Id: 2
+    Name: LAdotNET2
+    Ip: 127.0.0.1
+    Port: 6020
