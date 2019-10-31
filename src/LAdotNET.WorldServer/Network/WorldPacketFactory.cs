@@ -52,14 +52,23 @@ namespace LAdotNET.WorldServer.Network
                 { 0x97B6,   typeof(SMInitQuestPointReward) },
                 { 0x2819,   typeof(SMInitPropCollecting) },
                 { 0xDCC9,   typeof(SMInitWorldIslandData) },
-                //
-
-
-                //{ 0x324B,   typeof(excess) },
-
-
-                //
-
+                { 0x324B,   typeof(SMInitExcessMoney) },
+                { 0x1A36,   typeof(SMInitPet) },
+                { 0x5D8E,   typeof(SMModSignetCountNotify) },
+                { 0xB89C,   typeof(SMInitContentsBookmark) },
+                { 0x326D,   typeof(SMInitChaosDungeonRewardCount) },
+                { 0xB76C,   typeof(SMInitNpcFriendshipAction) },
+                { 0xC2C2,   typeof(SMInitNpcFriendship) },
+                { 0x38E6,   typeof(SMInitMusic) },
+                { 0x8E0A,   typeof(SMInitQuest) },
+                { 0x510C,   typeof(SMInitNpcFriendshipTalk) },
+                { 0xE5B4,   typeof(SMInitCard) },
+                { 0x11C,    typeof(SMVoyageLinerUpdateNotify) },
+                { 0x6B8,    typeof(SMInitBattleSlot) },
+                { 0x9741,   typeof(SMPeriodUpdateStatNotify) },
+                { 0x6AA4,   typeof(SMInitCardDeck) },
+                { 0xC780,   typeof(SMInitCalendar) },
+                { 0x78FA,   typeof(SMInitPaidAction) },
                 { 0xA402,   typeof(SMInitPC) },
                 { 0xEA1C,   typeof(SMReverseRuinRewardNotify) },
                 { 0xF8A,    typeof(SMNewVehicle) },

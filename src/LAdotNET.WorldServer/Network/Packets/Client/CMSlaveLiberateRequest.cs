@@ -23,7 +23,8 @@ namespace LAdotNET.WorldServer.Network.Packets.Client
 
         public override async Task HandleAsync()
         {
-            // ENTER WORLD
+            // TEST DUMMY WORLD ENTRANCE
+
             List<Packet> pkts = new List<Packet>
             {
                 // top
@@ -52,10 +53,8 @@ namespace LAdotNET.WorldServer.Network.Packets.Client
                 new SMMusicRemoveNotify(Connection),
                 new SMInitTownSiteArea(Connection),
                 new SMInitContentsConfig(Connection),
-
                 new SMInitAbilityUnlock(Connection, 0),
                 new SMInitAbilityUnlock(Connection, 1),
-
                 new SMInitCrew(Connection),
                 new SMInitCumulativePoint(Connection),
                 new SMInitEnv(Connection),
@@ -65,10 +64,24 @@ namespace LAdotNET.WorldServer.Network.Packets.Client
                 new SMInitQuestPointReward(Connection),
                 new SMInitPropCollecting(Connection),
                 new SMInitWorldIslandData(Connection),
-                // todo
-
-
-                // bottom
+                new SMInitExcessMoney(Connection),
+                new SMInitPet(Connection),
+                new SMModSignetCountNotify(Connection),
+                new SMInitContentsBookmark(Connection),
+                new SMInitChaosDungeonRewardCount(Connection),
+                new SMInitNpcFriendshipAction(Connection),
+                new SMInitNpcFriendship(Connection),
+                new SMInitMusic(Connection),
+                new SMInitQuest(Connection),
+                new SMInitNpcFriendshipTalk(Connection),
+                new SMInitCard(Connection),
+                new SMVoyageLinerUpdateNotify(Connection),
+                new SMInitBattleSlot(Connection),
+                new SMImmuneNotify(Connection), // immune notify
+                new SMPeriodUpdateStatNotify(Connection),
+                new SMInitCardDeck(Connection),
+                new SMInitCalendar(Connection),
+                new SMInitPaidAction(Connection),
                 new SMInitPC(Connection),
                 new SMReverseRuinRewardNotify(Connection),
                 new SMNewVehicle(Connection),
