@@ -7,7 +7,7 @@ namespace LAdotNET.Utils
 {
     public class ConsoleUtils
     {
-        public enum ServerType { LOGINSERVER, GAMESERVER };
+        public enum ServerType { LOGINSERVER, GAMESERVER, WORLDSERVER };
 
         private const string TitlePrefix = "LAdotNET: Loginserver";
 
@@ -33,8 +33,10 @@ namespace LAdotNET.Utils
         {
             if (server == ServerType.LOGINSERVER)
                 Console.Title = "LAdotNET: Loginserver";
-            else
+            else if(server == ServerType.GAMESERVER)
                 Console.Title = "LAdotNET: Gameserver";
+            else
+                Console.Title = "LAdotNET: Worldserver";
 
             Console.ForegroundColor = color;
             WriteLinesCentered(Logo);

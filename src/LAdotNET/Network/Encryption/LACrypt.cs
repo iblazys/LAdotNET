@@ -26,44 +26,14 @@ namespace LAdotNET.Network.Encryption
             0x72, 0x46, 0xF9, 0xAC
         };
 
-        public void Xor(IByteBuffer data, ushort seed, int length)
-        {
-            int packetSizeNoHeader = length - 6;
-            int index = 6;
-
-            if (packetSizeNoHeader > 0)
-            {
-                int decryptSize = packetSizeNoHeader;
-
-                do
-                {
-                    var b = (byte)(data.GetByte(index) ^ xorKey[(seed & 0xFF) + 4]);
-                    data.SetByte(index, b);
-                    --decryptSize;
-                    seed++;
-                    index++;
-                }
-                while (decryptSize > 0);
-            }
-        }
 
         public static void Xor(IByteBuffer data, int seed)
         {
-            int index = 0;
-
-            if (data.ReadableBytes > 0)
+            for(int i = 0; i < data.ReadableBytes; i++)
             {
-                int decryptSize = data.ReadableBytes;
+                data.SetByte(i, (byte)(data.GetByte(i) ^ xorKey[(seed & 0xFF) + 4]));
 
-                do
-                {
-                    var b = (byte)(data.GetByte(index) ^ xorKey[(seed & 0xFF) + 4]);
-                    data.SetByte(index, b);
-                    --decryptSize;
-                    seed++;
-                    index++;
-                }
-                while (decryptSize > 0);
+                seed++;
             }
         }
     }

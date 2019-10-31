@@ -1,5 +1,6 @@
 ﻿using DotNetty.Buffers;
 using DotNetty.Transport.Channels;
+using LAdotNET.Utils;
 using System.Threading.Tasks;
 
 namespace LAdotNET.Network.Packets
@@ -13,6 +14,17 @@ namespace LAdotNET.Network.Packets
             if (!(msg is Packet packet)) return base.WriteAsync(context, null);
 
             packet.Deserialize();
+
+            // DEBUG
+            Logger.Debug("[S] - {0} - op[0x{1}] - length[{2}] - encrypted[{3}] - compression[{4}]",
+                packet.GetType().Name,
+                packet.OpCode.ToString("X"),
+                packet.Data.ReadableBytes + 6,
+                packet.IsEncrypted.ToString(),
+                packet.CompressionType.ToString());
+
+            Logger.Debug($"\n{HexUtils.Dump(packet.Data)}");
+            // DEBUG
 
             if (packet.CompressionType != CompressionType.NONE)
                 packet.Compress(); // TODO: LZ4

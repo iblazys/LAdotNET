@@ -14,9 +14,8 @@ namespace LAdotNET.GameServer.Network
         {
             Packets = new Dictionary<ushort, Type>
             {
-                // These two opcodes do not change between updates
+                // Login
                 { 0xA257,   typeof(CMSlaveLiberateRequest) },
-                // 0xCDA9, length 29 -- back to login server
                 
                 { 0xFF9,   typeof(SMPaidShopLimitList) },
                 { 0xA813,   typeof(SMPaidBuffChangeNotify) },
@@ -28,11 +27,18 @@ namespace LAdotNET.GameServer.Network
 
                 { 0x38A4, typeof(CMUnknownPacket1) },
 
+                // Character Creation
                 { 0xE36E,   typeof(CMPCNameChangeRequest) },
                 { 0xB57F, typeof(SMPCNameChangeResult) },
 
                 { 0xB2BF, typeof(CMPCBattlefieldMercenaryJoinHistoryRequest) },
-                { 0xE11C, typeof(SMPCBattlefieldMercenaryJoinHistoryResult) }
+                { 0xE11C, typeof(SMPCBattlefieldMercenaryJoinHistoryResult) },
+
+                // Select Character
+                { 0xBC94, typeof(CMUnknownPacket2) },
+                { 0x9BA3, typeof(SMPCRoomStateNotify) },
+
+                { 0xAA30, typeof(SMAuthError) },
             };
 
             ReverseLookup = new Dictionary<Type, ushort>();

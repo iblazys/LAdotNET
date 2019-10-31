@@ -1,6 +1,7 @@
 ﻿using DotNetty.Transport.Channels;
 using LAdotNET.Network.Encryption;
 using LAdotNET.Network.Packets;
+using LAdotNET.Utils;
 using NLog;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -44,22 +45,29 @@ namespace LAdotNET.Network
         }
 
         /// <summary>
-        /// Sends a packet
+        /// Sends a packet asynchronously
         /// </summary>
         /// <param name="packet"></param>
         /// <returns></returns>
         public async Task SendAsync(Packet packet)
         {
             await Channel.WriteAndFlushAsync(packet);
-
+            
+            /*
             Logger.Debug("[S] - {0} - op[0x{1}] - length[{2}] - encrypted[{3}] - compression[{4}]",
                 packet.GetType().Name,
                 packet.OpCode.ToString("X"),
                 packet.Length,
                 packet.IsEncrypted.ToString(),
                 packet.CompressionType.ToString());
-        } 
+                */
+        }
 
+        /// <summary>
+        /// Sends a list of packets asynchronously
+        /// </summary>
+        /// <param name="packet"></param>
+        /// <returns></returns>
         public async Task SendAsync(IEnumerable<Packet> packets)
         {
             foreach(Packet packet in packets)

@@ -2,6 +2,7 @@
 using LAdotNET.GameServer.Network.Packets.Server;
 using LAdotNET.Network;
 using LAdotNET.Network.Packets;
+using LAdotNET.Utils;
 using System;
 using System.Threading.Tasks;
 
@@ -35,7 +36,7 @@ namespace LAdotNET.GameServer.Network.Packets.Client
 
         public override void Serialize()
         {
-
+            Logger.Debug("\n" + HexUtils.Dump(Data));
         }
     }
 }

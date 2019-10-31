@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LAdotNET", "LAdotNET\LAdotN
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LAdotNET.LoginServer", "LAdotNET.LoginServer\LAdotNET.LoginServer.csproj", "{AFF299B8-2480-4E48-9DC4-3AD24993579B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAdotNET.GameServer", "LAdotNET.GameServer\LAdotNET.GameServer.csproj", "{019B56A9-6E50-47D3-820A-EFBBDFB64C81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LAdotNET.GameServer", "LAdotNET.GameServer\LAdotNET.GameServer.csproj", "{019B56A9-6E50-47D3-820A-EFBBDFB64C81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LAdotNET.WorldServer", "LAdotNET.WorldServer\LAdotNET.WorldServer.csproj", "{4796CE62-6A86-44D0-8439-4C3F571ACBE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{019B56A9-6E50-47D3-820A-EFBBDFB64C81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{019B56A9-6E50-47D3-820A-EFBBDFB64C81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{019B56A9-6E50-47D3-820A-EFBBDFB64C81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4796CE62-6A86-44D0-8439-4C3F571ACBE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4796CE62-6A86-44D0-8439-4C3F571ACBE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4796CE62-6A86-44D0-8439-4C3F571ACBE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4796CE62-6A86-44D0-8439-4C3F571ACBE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
