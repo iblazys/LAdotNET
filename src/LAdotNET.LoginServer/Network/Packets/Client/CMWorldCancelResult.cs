@@ -22,7 +22,6 @@ namespace LAdotNET.LoginServer.Network.Packets.Client
         public override async Task HandleAsync()
         {
             await Connection.SendAsync(new SMWorldCancelResult(Connection));
-            await Connection.SendAsync(new SMPCRoomRequestRewardResult(Connection));
         }
 
         public override void Serialize()

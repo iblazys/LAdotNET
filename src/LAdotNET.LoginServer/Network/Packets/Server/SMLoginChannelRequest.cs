@@ -17,6 +17,12 @@ namespace LAdotNET.LoginServer.Network.Packets.Server
 
         public override void Deserialize()
         {
+            Data.WriteLAString("88080929");   // ACCOUNT ID
+
+            Data.WriteIntLE(0);   // UNK
+            Data.WriteIntLE(0);   // UNK
+
+            // Server List
             Data.WriteShortLE(Loginserver.Config.Login.ServerList.Count); // SERVER COUNT
 
             foreach (var serv in Loginserver.Config.Login.ServerList)
@@ -36,24 +42,21 @@ namespace LAdotNET.LoginServer.Network.Packets.Server
                 Data.WriteByte(0);    // unk
                 Data.WriteByte(5);    // Character Count
             }
-
-            Data.WriteIntLE(10000); // RESULT CODE
-
-            Data.WriteLAString("88080929");   // ACCOUNT ID
-
-            Data.WriteIntLE(0);   // UNK
-            Data.WriteIntLE(0);   // UNK
-            Data.WriteShortLE(0); // UNK
-            Data.WriteByte(0);    // UNK
+            // End Server List
 
             Data.WriteLAString(Loginserver.Config.Network.ClientVersion); // CLIENT_VERSION
 
-            Data.WriteIntLE(0);   // UNK
             Data.WriteShortLE(0); // UNK
+
+            Data.WriteIntLE(10000); // RESULT CODE
+
+            Data.WriteByte(0);    // UNK
+            Data.WriteIntLE(0);   // UNK
 
             Data.WriteLAString("88080929");   // ACCOUNT ID
 
-            Data.WriteIntLE(0);   // UNK
+            Data.WriteIntLE(8);     // UNK
+            Data.WriteShortLE(0);   // UNK
         }
 
         public override Task HandleAsync()

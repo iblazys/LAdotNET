@@ -18,12 +18,11 @@ namespace LAdotNET.LoginServer.Network
                 { 0x1,  typeof(CMHelloServer) },
                 { 0x2,  typeof(SMHelloClient) },
 
-
-                { 0x8592,   typeof(CMLoginChannelRequest) },
-                { 0x3F5A,   typeof(SMLoginChannelRequest) },
-                { 0xBB44,   typeof(SMPCRoomRequestRewardResult) },
-                { 0x593,    typeof(CMWorldCancelResult) },
-                { 0x9B4F,   typeof(SMWorldCancelResult) }
+                { 0xB48E,   typeof(CMLoginChannelRequest) },
+                { 0x8F86,   typeof(SMLoginChannelRequest) },
+                { 0x3D96,   typeof(SMPCRoomRequestRewardResult) },
+                { 0x43CA,    typeof(CMWorldCancelResult) },
+                { 0x904A,   typeof(SMWorldCancelResult) }
             };
 
             ReverseLookup = new Dictionary<Type, ushort>();

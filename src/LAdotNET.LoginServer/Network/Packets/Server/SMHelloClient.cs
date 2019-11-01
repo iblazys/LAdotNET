@@ -21,14 +21,15 @@ namespace LAdotNET.LoginServer.Network.Packets.Server
 
             Data.WriteBytes(new byte[]
             {
-                0x03, 0xCB, 0xEA, 0xB6, // first 4 bytes of xor key
+                0x20, 0xC9, 0xA7, 0x42 // first 4 bytes of xor key
             });
 
-            Data.WriteLAString("1.284.314.875818(CL:875818) (2019-10-15 19:20:52)");
+            //Data.WriteLAString("1.284.314.875818(CL:875818) (2019-10-15 19:20:52)");
+            Data.WriteLAString("1.75.126.889862(CL:889862) (2019-10-30 13:38:49)");
 
             Data.WriteBytes(new byte[]
             {
-                0x07, 0x09, 0x71, 0x0D // unk // THIS DOES NOT SEEM LIKE A CRC - I HAVE CHANGED IT AND CLIENT STILL ACCEPTED IT.
+                0xC2, 0x3B, 0x6D, 0xC8 // unk // THIS DOES NOT SEEM LIKE A CRC - I HAVE CHANGED IT AND CLIENT STILL ACCEPTED IT.
             });
         }
 
