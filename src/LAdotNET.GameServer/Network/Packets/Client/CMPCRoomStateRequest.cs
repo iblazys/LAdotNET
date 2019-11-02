@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace LAdotNET.GameServer.Network.Packets.Client
 {
-    class CMUnknownPacket2 : Packet
+    class CMPCRoomStateRequest : Packet
     {
         /*
-         * This packet is received after the server sends SMSlaveLiberateRequestResult
+         * This packet is received after selecting a character
          */
 
-        public CMUnknownPacket2(Connection connection, IByteBuffer buffer) : base(connection, buffer)
+        public CMPCRoomStateRequest(Connection connection, IByteBuffer buffer) : base(connection, buffer)
         {
             //
         }
@@ -31,7 +31,9 @@ namespace LAdotNET.GameServer.Network.Packets.Client
 
         public override async Task HandleAsync()
         {
-            
+            await Connection.SendAsync(new SMPCRoomStateNotify(Connection));
+
+            //Connection.SendAsync(new SMAuthError(Connection)); // Send auth error
         }
     }
 }

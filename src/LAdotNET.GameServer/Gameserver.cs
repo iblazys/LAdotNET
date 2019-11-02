@@ -1,5 +1,6 @@
 ﻿using LAdotNET.GameServer.Network;
 using LAdotNET.Network;
+using LAdotNET.Network.Packets;
 using LAdotNET.Utils;
 using System;
 using System.Threading.Tasks;
@@ -28,7 +29,7 @@ namespace LAdotNET.GameServer
             //Config.Load();
 
             // Load Opcodes
-            GamePacketFactory.Init();
+            PacketFactory.Load();
 
             //await base.RunAsync(Config.Network, new LoginSessionInitializer());
             await base.RunAsync("127.0.0.1", 6020);

@@ -17,7 +17,7 @@ namespace LAdotNET.LoginServer.Network.Packets.Server
         public override void Deserialize()
         {
             Data.WriteIntLE(11000);   // RESULT CODE
-            Data.WriteLAString("127.0.0.1:6020"); // GAMESERVER IP AND PORT
+            Data.WriteUnicodeString("127.0.0.1:6020"); // GAMESERVER IP AND PORT
             Data.WriteLongLE(3182562);    // SOME ID - ACCOUNT OR SESSION??
             Data.WriteShortLE(0);         // UNK
             Data.WriteIntLE(473741366);   // UNK - CHANGES EVERY TIME

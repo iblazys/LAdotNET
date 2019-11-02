@@ -17,7 +17,7 @@ namespace LAdotNET.LoginServer.Network.Packets.Server
 
         public override void Deserialize()
         {
-            Data.WriteLAString("88080929");   // ACCOUNT ID
+            Data.WriteUnicodeString("88080929");   // ACCOUNT ID
 
             Data.WriteIntLE(0);   // UNK
             Data.WriteIntLE(0);   // UNK
@@ -44,7 +44,7 @@ namespace LAdotNET.LoginServer.Network.Packets.Server
             }
             // End Server List
 
-            Data.WriteLAString(Loginserver.Config.Network.ClientVersion); // CLIENT_VERSION
+            Data.WriteUnicodeString(Loginserver.Config.Network.ClientVersion); // CLIENT_VERSION
 
             Data.WriteShortLE(0); // UNK
 
@@ -53,7 +53,7 @@ namespace LAdotNET.LoginServer.Network.Packets.Server
             Data.WriteByte(0);    // UNK
             Data.WriteIntLE(0);   // UNK
 
-            Data.WriteLAString("88080929");   // ACCOUNT ID
+            Data.WriteUnicodeString("88080929");   // ACCOUNT ID
 
             Data.WriteIntLE(8);     // UNK
             Data.WriteShortLE(0);   // UNK

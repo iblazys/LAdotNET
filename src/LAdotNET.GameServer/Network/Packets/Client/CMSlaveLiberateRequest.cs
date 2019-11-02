@@ -1,4 +1,5 @@
 ﻿using DotNetty.Buffers;
+using LAdotNET.Extensions;
 using LAdotNET.GameServer.Network.Packets.Server;
 using LAdotNET.Network;
 using LAdotNET.Network.Packets;
@@ -10,6 +11,15 @@ namespace LAdotNET.GameServer.Network.Packets.Client
 {
     class CMSlaveLiberateRequest : Packet
     {
+        private long UnkId { get; set; }
+        private long PrevId { get; set; }
+        private string UnkKey1 { get; set; }
+        private string UnkKey2 { get; set; }
+
+        private string AccountID { get; set; }
+
+        private long UnkLong { get; set; }
+
         public CMSlaveLiberateRequest(Connection connection, IByteBuffer buffer) : base(connection, buffer)
         {
             //
@@ -36,7 +46,30 @@ namespace LAdotNET.GameServer.Network.Packets.Client
 
         public override void Serialize()
         {
-            Logger.Debug("\n" + HexUtils.Dump(Data));
+            Data.SkipBytes(4);
+            Data.SkipBytes(4);
+
+            UnkId = Data.ReadLongLE(); // some id?
+            PrevId = Data.ReadLongLE(); // this is from SMWorldCancelResult
+
+            UnkKey1 = Data.ReadString();
+            UnkKey2 = Data.ReadString();
+
+            Data.SkipBytes(1); // byte
+
+            AccountID = Data.ReadUnicodeString();
+
+            UnkLong = Data.ReadLongLE();
+
+            // DEBUG INFO
+            Logger.Debug(
+                $"UnkID: {UnkId}\n" +
+                $"PrevID: {PrevId}\n" +
+                $"UnkKey1: {UnkKey1}\n" +
+                $"UnkKey2: {UnkKey2}\n" +
+                $"AccountID: {AccountID}\n" +
+                $"UnkLong: {UnkLong}\n"
+                );
         }
     }
 }

@@ -30,7 +30,7 @@ namespace LAdotNET.LoginServer
             Config.Load();
 
             // Load Opcodes
-            LoginPacketFactory.Init();
+            PacketFactory.Load();
 
             //await base.RunAsync(Config.Network, new LoginSessionInitializer());
             await base.RunAsync("127.0.0.1", 6010);

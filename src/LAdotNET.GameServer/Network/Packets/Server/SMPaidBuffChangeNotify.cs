@@ -15,6 +15,7 @@ namespace LAdotNET.GameServer.Network.Packets.Server
 
         public override void Deserialize()
         {
+            // Data did not change from 1.6.2.3 - 1.6.4.1
             Data.WriteBytes(new byte[]
             {
                 0x00, 0x04, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,

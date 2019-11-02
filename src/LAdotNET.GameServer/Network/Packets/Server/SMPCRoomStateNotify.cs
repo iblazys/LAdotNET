@@ -8,9 +8,6 @@ namespace LAdotNET.GameServer.Network.Packets.Server
 {
     class SMPCRoomStateNotify : Packet
     {
-        /// <summary>
-        /// Sends the actual gameserver ip address and result code
-        /// </summary>
         public SMPCRoomStateNotify(Connection connection) : base(connection)
         {
             CompressionType = CompressionType.SNAPPY;
@@ -19,15 +16,25 @@ namespace LAdotNET.GameServer.Network.Packets.Server
 
         public override void Deserialize()
         {
-            Data.WriteIntLE(3182562);
-            Data.WriteIntLE(0);
-            Data.WriteIntLE(575880581);
-
-            Data.WriteLAString("127.0.0.1:6040");
-
-            Data.WriteLongLE(153234490); // some id? appears at end of CMSlaveLiberateRequest after character selection
-
             Data.WriteIntLE(13000); // RETURN CODE
+            Data.WriteIntLE(1940933313); // unk
+
+            Data.WriteUnicodeString("127.0.0.1:6040");
+
+            Data.WriteLongLE(3182562); // some id? also in SMWorldCancelResult
+            Data.WriteLongLE(153275889); // some session id? appears at end of CMSlaveLiberateRequest after character selection
+
+
+            /*
+            // If we send this followed by SMAuthError we can get the account passcode to show up
+
+            Data.WriteIntLE(13010); // RETURN CODE
+            Data.WriteLongLE(0);
+            Data.WriteLongLE(0);
+            Data.WriteIntLE(0);
+            Data.WriteShortLE(0);
+
+            */
         }
 
         public override Task HandleAsync()
