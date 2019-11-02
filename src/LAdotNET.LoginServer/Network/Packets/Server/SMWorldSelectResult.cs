@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace LAdotNET.LoginServer.Network.Packets.Server
 {
-    class SMWorldCancelResult : Packet
+    class SMWorldSelectResult : Packet
     {
-        public SMWorldCancelResult(Connection connection) : base(connection)
+        public SMWorldSelectResult(Connection connection) : base(connection)
         {
             CompressionType = CompressionType.SNAPPY;
             OpCode = PacketFactory.ReverseLookup[GetType()];

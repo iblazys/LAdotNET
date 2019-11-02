@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace LAdotNET.LoginServer.Network.Packets.Server
 {
-    class SMLoginChannelRequest : Packet
+    class SMLoginResult : Packet
     {
-        public SMLoginChannelRequest(Connection connection) : base(connection)
+        public SMLoginResult(Connection connection) : base(connection)
         {
             CompressionType = CompressionType.SNAPPY;
             OpCode = PacketFactory.ReverseLookup[GetType()];

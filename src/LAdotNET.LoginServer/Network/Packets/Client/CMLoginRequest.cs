@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace LAdotNET.LoginServer.Network.Packets.Client
 {
-    class CMLoginChannelRequest : Packet
+    class CMLoginRequest : Packet
     {
-        public CMLoginChannelRequest(Connection connection, IByteBuffer buffer) : base(connection, buffer)
+        public CMLoginRequest(Connection connection, IByteBuffer buffer) : base(connection, buffer)
         {
             // Set State etc
         }
@@ -22,8 +22,8 @@ namespace LAdotNET.LoginServer.Network.Packets.Client
 
         public override async Task HandleAsync()
         {
-            await Connection.SendAsync(new SMLoginChannelRequest(Connection));
-            await Connection.SendAsync(new SMPCRoomRequestRewardResult(Connection));
+            await Connection.SendAsync(new SMLoginResult(Connection));
+            await Connection.SendAsync(new SMPCRoomStateNotify(Connection));
         }
 
         public override void Deserialize()

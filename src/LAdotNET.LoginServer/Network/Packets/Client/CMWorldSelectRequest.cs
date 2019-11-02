@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace LAdotNET.LoginServer.Network.Packets.Client
 {
-    class CMWorldCancelResult : Packet
+    class CMWorldSelectRequest : Packet
     {
-        public CMWorldCancelResult(Connection connection, IByteBuffer buffer) : base(connection, buffer)
+        public CMWorldSelectRequest(Connection connection, IByteBuffer buffer) : base(connection, buffer)
         {
             // Set State etc
         }
@@ -21,7 +21,7 @@ namespace LAdotNET.LoginServer.Network.Packets.Client
 
         public override async Task HandleAsync()
         {
-            await Connection.SendAsync(new SMWorldCancelResult(Connection));
+            await Connection.SendAsync(new SMWorldSelectResult(Connection));
         }
 
         public override void Serialize()

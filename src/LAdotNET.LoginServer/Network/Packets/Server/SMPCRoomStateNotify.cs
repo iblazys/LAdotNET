@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace LAdotNET.LoginServer.Network.Packets.Server
 {
-    class SMPCRoomRequestRewardResult : Packet
+    class SMPCRoomStateNotify : Packet
     {
-        public SMPCRoomRequestRewardResult(Connection connection) : base(connection)
+        public SMPCRoomStateNotify(Connection connection) : base(connection)
         {
             OpCode = PacketFactory.ReverseLookup[GetType()];
         }

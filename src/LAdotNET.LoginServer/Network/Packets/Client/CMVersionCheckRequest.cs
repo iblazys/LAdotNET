@@ -7,11 +7,11 @@ using LAdotNET.Network.Packets;
 
 namespace LAdotNET.LoginServer.Network.Packets.Client
 {
-    class CMHelloServer : Packet
+    class CMVersionCheckRequest : Packet
     {
         private int DataEZ { get; set; }
 
-        public CMHelloServer(Connection connection, IByteBuffer pkt) : base(connection, pkt) { }
+        public CMVersionCheckRequest(Connection connection, IByteBuffer pkt) : base(connection, pkt) { }
 
         public override void Deserialize()
         {
@@ -20,7 +20,7 @@ namespace LAdotNET.LoginServer.Network.Packets.Client
 
         public override async Task HandleAsync()
         {
-            await Connection.SendAsync(new SMHelloClient(Connection));
+            await Connection.SendAsync(new SMVersionCheckResult(Connection));
         }
 
         public override void Serialize()

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace LAdotNET.LoginServer.Network.Packets.Server
 {
-    public class SMHelloClient : Packet
+    public class SMVersionCheckResult : Packet
     {
-        public SMHelloClient(Connection connection) : base(connection)
+        public SMVersionCheckResult(Connection connection) : base(connection)
         {
             CompressionType = CompressionType.SNAPPY;
             IsEncrypted = false;
