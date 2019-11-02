@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace LAdotNET.GameServer.Network.Packets.Client
 {
-    class CMPCRoomStateRequest : Packet
+    class CMPCSelectRequest : Packet
     {
         /*
          * This packet is received after selecting a character
          * Controls world entrance?
          */
 
-        public CMPCRoomStateRequest(Connection connection, IByteBuffer buffer) : base(connection, buffer)
+        public CMPCSelectRequest(Connection connection, IByteBuffer buffer) : base(connection, buffer)
         {
             //
         }

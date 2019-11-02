@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace LAdotNET.GameServer.Network.Packets.Client
 {
-    class CMPCNameChangeRequest : Packet
+    class CMPCNameCheckRequest : Packet
     {
-        public CMPCNameChangeRequest(Connection connection, IByteBuffer buffer) : base(connection, buffer)
+        public CMPCNameCheckRequest(Connection connection, IByteBuffer buffer) : base(connection, buffer)
         {
             //
         }

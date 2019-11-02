@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace LAdotNET.GameServer.Network.Packets.Client
 {
-    class CMPCBattlefieldMercenaryJoinHistoryRequest : Packet
+    class CMPCCreateRequest : Packet
     {
-        public CMPCBattlefieldMercenaryJoinHistoryRequest(Connection connection, IByteBuffer buffer) : base(connection, buffer)
+        public CMPCCreateRequest(Connection connection, IByteBuffer buffer) : base(connection, buffer)
         {
             //
         }
