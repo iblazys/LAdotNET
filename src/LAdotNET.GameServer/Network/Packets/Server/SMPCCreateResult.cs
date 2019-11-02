@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace LAdotNET.GameServer.Network.Packets.Server
 {
-    class SMPCBattlefieldMercenaryJoinHistoryResult : Packet
+    class SMPCCreateResult : Packet
     {
-        public SMPCBattlefieldMercenaryJoinHistoryResult(Connection connection) : base(connection)
+        public SMPCCreateResult(Connection connection) : base(connection)
         {
             CompressionType = CompressionType.SNAPPY;
             OpCode = PacketFactory.ReverseLookup[GetType()];

@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace LAdotNET.GameServer.Network.Packets.Server
 {
-    class SMPCRoomRequestRewardResult : Packet
+    class SMEnterWorldCompleted : Packet
     {
-        public SMPCRoomRequestRewardResult(Connection connection) : base(connection)
+        public SMEnterWorldCompleted(Connection connection) : base(connection)
         {
             OpCode = PacketFactory.ReverseLookup[GetType()];
         }
@@ -16,8 +16,10 @@ namespace LAdotNET.GameServer.Network.Packets.Server
         {
             Data.WriteBytes(new byte[]
             {
-                0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00
+                0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                0xF1, 0xCD, 0x22, 0x09, 0x00, 0x00, 0x00, 0x00, // 153275889 - in SMPCSelectResult (character id?)
+                0x00
             });
         }
 

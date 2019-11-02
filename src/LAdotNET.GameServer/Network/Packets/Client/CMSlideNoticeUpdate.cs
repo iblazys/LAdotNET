@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LAdotNET.GameServer.Network.Packets.Client
 {
-    class CMSlaveLiberateRequest : Packet
+    class CMSlideNoticeUpdate : Packet
     {
         private long UnkId { get; set; }
         private long PrevId { get; set; }
@@ -20,7 +20,7 @@ namespace LAdotNET.GameServer.Network.Packets.Client
 
         private long UnkLong { get; set; }
 
-        public CMSlaveLiberateRequest(Connection connection, IByteBuffer buffer) : base(connection, buffer)
+        public CMSlideNoticeUpdate(Connection connection, IByteBuffer buffer) : base(connection, buffer)
         {
             //
         }
@@ -34,14 +34,14 @@ namespace LAdotNET.GameServer.Network.Packets.Client
         {
             // TODO: SendAsync(List<Packet>)
 
-            await Connection.SendAsync(new SMPaidShopLimitList(Connection));
-            await Connection.SendAsync(new SMWallpaperChangeResult(Connection));
-            await Connection.SendAsync(new SMPCListExcessResult(Connection));
-            await Connection.SendAsync(new SMPCRoomRequestRewardResult(Connection));
-            await Connection.SendAsync(new SMPaidBuffChangeNotify(Connection));
+            await Connection.SendAsync(new SMPaidShopSettingNotify(Connection));
+            await Connection.SendAsync(new SMWallpaperListResult(Connection));
+            await Connection.SendAsync(new SMPCListResult(Connection));
+            await Connection.SendAsync(new SMPCRoomStateNotify(Connection));
             await Connection.SendAsync(new SMPaidCashCheckResult(Connection));
+            await Connection.SendAsync(new SMPaidPurchaseCheckResult(Connection));
 
-            await Connection.SendAsync(new SMSlaveLiberateRequestResult(Connection));
+            await Connection.SendAsync(new SMSlideNoticeUpdateNotify(Connection));
         }
 
         public override void Serialize()

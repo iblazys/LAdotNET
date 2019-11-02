@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace LAdotNET.GameServer.Network.Packets.Server
 {
-    class SMWallpaperChangeResult : Packet
+    class SMWallpaperListResult : Packet
     {
-        public SMWallpaperChangeResult(Connection connection) : base(connection)
+        public SMWallpaperListResult(Connection connection) : base(connection)
         {
             CompressionType = CompressionType.SNAPPY;
             OpCode = PacketFactory.ReverseLookup[GetType()];

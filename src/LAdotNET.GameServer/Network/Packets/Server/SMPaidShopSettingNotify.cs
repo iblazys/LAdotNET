@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace LAdotNET.GameServer.Network.Packets.Server
 {
-    class SMPaidShopLimitList : Packet
+    class SMPaidShopSettingNotify : Packet
     {
         public static byte[] ShopData = new byte[]
         {
@@ -130,7 +130,7 @@ namespace LAdotNET.GameServer.Network.Packets.Server
             0x00, 0x00, 0x00, 0xB9, 0x03, 0x00, 0x00
         };
 
-        public SMPaidShopLimitList(Connection connection) : base(connection)
+        public SMPaidShopSettingNotify(Connection connection) : base(connection)
         {
             CompressionType = CompressionType.SNAPPY;
             OpCode = PacketFactory.ReverseLookup[GetType()];

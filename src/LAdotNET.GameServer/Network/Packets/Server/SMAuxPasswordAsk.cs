@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace LAdotNET.GameServer.Network.Packets.Server
 {
-    class SMAuthError : Packet
+    class SMAuxPasswordAsk : Packet
     {
-        public SMAuthError(Connection connection) : base(connection)
+        public SMAuxPasswordAsk(Connection connection) : base(connection)
         {
             OpCode = PacketFactory.ReverseLookup[GetType()];
         }

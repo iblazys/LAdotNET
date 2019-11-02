@@ -22,7 +22,7 @@ namespace LAdotNET.GameServer.Network.Packets.Client
 
         public override async Task HandleAsync()
         {
-            await Connection.SendAsync(new SMPCBattlefieldMercenaryJoinHistoryResult(Connection));
+            await Connection.SendAsync(new SMPCCreateResult(Connection));
         }
 
         public override void Serialize()

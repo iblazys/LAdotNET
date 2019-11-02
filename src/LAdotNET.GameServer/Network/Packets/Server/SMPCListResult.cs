@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace LAdotNET.GameServer.Network.Packets.Server
 {
-    class SMPCListExcessResult : Packet
+    class SMPCListResult : Packet
     {
-        public SMPCListExcessResult(Connection connection) : base(connection)
+        public SMPCListResult(Connection connection) : base(connection)
         {
             CompressionType = CompressionType.SNAPPY;
             OpCode = PacketFactory.ReverseLookup[GetType()];

@@ -12,6 +12,7 @@ namespace LAdotNET.GameServer.Network.Packets.Client
     {
         /*
          * This packet is received after selecting a character
+         * Controls world entrance?
          */
 
         public CMPCRoomStateRequest(Connection connection, IByteBuffer buffer) : base(connection, buffer)
@@ -31,9 +32,17 @@ namespace LAdotNET.GameServer.Network.Packets.Client
 
         public override async Task HandleAsync()
         {
-            await Connection.SendAsync(new SMPCRoomStateNotify(Connection));
+            // If using auxilary passcode
 
-            //Connection.SendAsync(new SMAuthError(Connection)); // Send auth error
+                // send with return code 13010 - pc_select_result_failure_aux_password_required
+                // await Connection.SendAsync(new SMPCRoomStateNotify(Connection)); 
+                // Connection.SendAsync(new SMAuthError(Connection)); // Send auth error with ret code 1?
+
+            // If not using aux passcode
+            
+            // send connection to worldserver
+            await Connection.SendAsync(new SMPCSelectResult(Connection)); // ret code pc_select_result_success
+            await Connection.SendAsync(new SMEnterWorldCompleted(Connection));
         }
     }
 }

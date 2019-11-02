@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace LAdotNET.GameServer.Network.Packets.Server
 {
-    class SMPCRoomStateNotify : Packet
+    class SMPaidPurchaseCheckResult : Packet
     {
-        public SMPCRoomStateNotify(Connection connection) : base(connection)
+        public SMPaidPurchaseCheckResult(Connection connection) : base(connection)
         {
             OpCode = PacketFactory.ReverseLookup[GetType()];
         }
@@ -17,7 +17,7 @@ namespace LAdotNET.GameServer.Network.Packets.Server
             Data.WriteBytes(new byte[]
             {
                 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00
+                0x18, 0xEA, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00
             });
         }
 

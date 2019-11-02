@@ -22,7 +22,7 @@ namespace LAdotNET.GameServer.Network.Packets.Client
 
         public override async Task HandleAsync()
         {
-            await Connection.SendAsync(new SMPCNameChangeResult(Connection));
+            await Connection.SendAsync(new SMPCNameCheckResult(Connection));
         }
 
         public override void Deserialize()
