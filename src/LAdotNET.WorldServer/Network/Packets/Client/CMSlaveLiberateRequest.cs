@@ -84,6 +84,7 @@ namespace LAdotNET.WorldServer.Network.Packets.Client
                 new SMInitPaidAction(Connection),
                 new SMInitPC(Connection),
                 new SMReverseRuinRewardNotify(Connection),
+                new SMInitVoyageExploration(Connection),
                 new SMNewVehicle(Connection),
                 new SMPaidPurchaseUnpackResult(Connection),
                 new SMImmuneNotify(Connection)

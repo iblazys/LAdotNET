@@ -1,4 +1,5 @@
 ﻿using LAdotNET.Network;
+using LAdotNET.Network.Packets;
 using LAdotNET.Utils;
 using LAdotNET.WorldServer.Network;
 using System;
@@ -28,7 +29,7 @@ namespace LAdotNET.WorldServer
             //Config.Load();
 
             // Load Opcodes
-            WorldPacketFactory.Init();
+            PacketFactory.Load();
 
             await base.RunAsync("127.0.0.1", 6040);
 

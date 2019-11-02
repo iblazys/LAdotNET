@@ -13,6 +13,7 @@ namespace LAdotNET.WorldServer.Network.Packets.Server
             OpCode = PacketFactory.ReverseLookup[GetType()];
         }
 
+        // 1.6.2.3 - 1.6.4.1 no change
         public override void Deserialize()
         {
             Data.WriteBytes(new byte[]

@@ -15,7 +15,7 @@ namespace LAdotNET.WorldServer.Network.Packets.Server
 
         public override void Deserialize()
         {
-            Data.WriteBytes(new byte[18]);
+            Data.WriteBytes(new byte[17]);
         }
 
         public override Task HandleAsync()

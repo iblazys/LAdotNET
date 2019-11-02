@@ -14,13 +14,7 @@ namespace LAdotNET.WorldServer.Network.Packets.Server
 
         public override void Deserialize()
         {
-            Data.WriteBytes(new byte[]
-            {
-                0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-                0x00, 0x00, 0x00, 0x00, 
-                0x00
-            });
+            Data.WriteBytes(new byte[23]); // 23 zeros with a fresh char?
         }
 
         public override Task HandleAsync()
