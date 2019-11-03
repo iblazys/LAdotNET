@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 
 namespace LAdotNET.WorldServer.Network.Packets.Server
 {
-    class SMImmuneStatusNotify : Packet
+    class SMBattlefieldWeeklyRewardNotify : Packet
     {
-        public SMImmuneStatusNotify(Connection connection) : base(connection)
+        public SMBattlefieldWeeklyRewardNotify(Connection connection) : base(connection)
         {
             OpCode = PacketFactory.ReverseLookup[GetType()];
         }
 
         public override void Deserialize()
         {
-            Data.WriteBytes(new byte[22]);
+            Data.WriteBytes(new byte[23]); // 23 zeros with a fresh char?
         }
 
         public override Task HandleAsync()

@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 
 namespace LAdotNET.WorldServer.Network.Packets.Server
 {
-    class SMImmuneStatusNotify : Packet
+    class SMPermanentAttrAcquireNotify : Packet
     {
-        public SMImmuneStatusNotify(Connection connection) : base(connection)
+        public SMPermanentAttrAcquireNotify(Connection connection) : base(connection)
         {
             OpCode = PacketFactory.ReverseLookup[GetType()];
         }
 
         public override void Deserialize()
         {
-            Data.WriteBytes(new byte[22]);
+            Data.WriteBytes(new byte[18]);
         }
 
         public override Task HandleAsync()

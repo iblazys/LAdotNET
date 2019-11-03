@@ -1,0 +1,37 @@
+﻿using LAdotNET.Network;
+using LAdotNET.Network.Packets;
+using System;
+using System.Threading.Tasks;
+
+namespace LAdotNET.WorldServer.Network.Packets.Server.Init
+{
+    class SMInitQuest : Packet
+    {
+        public SMInitQuest(Connection connection) : base(connection)
+        {
+            CompressionType = CompressionType.SNAPPY;
+            OpCode = PacketFactory.ReverseLookup[GetType()];
+        }
+
+        public override void Deserialize()
+        {
+            Data.WriteBytes(new byte[]
+            {
+                0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF,
+                0xB8, 0xFE, 0x6C, 0x17, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+                0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0x01, 0x00, 0x6C, 0x17, 0x01, 0x00, 0x00, 0x00,
+                0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+            });
+        }
+
+        public override Task HandleAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Serialize()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

@@ -5,16 +5,21 @@ using System.Threading.Tasks;
 
 namespace LAdotNET.WorldServer.Network.Packets.Server
 {
-    class SMImmuneStatusNotify : Packet
+    class SMServerTimeNotify : Packet
     {
-        public SMImmuneStatusNotify(Connection connection) : base(connection)
+        public SMServerTimeNotify(Connection connection) : base(connection)
         {
+            CompressionType = CompressionType.SNAPPY;
             OpCode = PacketFactory.ReverseLookup[GetType()];
         }
 
         public override void Deserialize()
         {
-            Data.WriteBytes(new byte[22]);
+            Data.WriteBytes(new byte[]
+            {
+                0x00, 0x00, 0x14, 0x21, 0x45, 0x0B, 0x00, 0x00, 0x00, 0x00, 0x00, 0xE3, 0xB7, 0x02, 0xB4, 0xD5,
+                0xE8, 0x00, 0x00, 0x04
+            });
         }
 
         public override Task HandleAsync()

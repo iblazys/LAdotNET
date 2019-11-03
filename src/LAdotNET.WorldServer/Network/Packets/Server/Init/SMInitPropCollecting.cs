@@ -3,11 +3,11 @@ using LAdotNET.Network.Packets;
 using System;
 using System.Threading.Tasks;
 
-namespace LAdotNET.WorldServer.Network.Packets.Server
+namespace LAdotNET.WorldServer.Network.Packets.Server.Init
 {
-    class SMImmuneStatusNotify : Packet
+    class SMInitPropCollecting : Packet
     {
-        public SMImmuneStatusNotify(Connection connection) : base(connection)
+        public SMInitPropCollecting(Connection connection) : base(connection)
         {
             OpCode = PacketFactory.ReverseLookup[GetType()];
         }

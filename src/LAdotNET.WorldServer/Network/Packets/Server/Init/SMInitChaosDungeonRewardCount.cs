@@ -3,18 +3,19 @@ using LAdotNET.Network.Packets;
 using System;
 using System.Threading.Tasks;
 
-namespace LAdotNET.WorldServer.Network.Packets.Server
+namespace LAdotNET.WorldServer.Network.Packets.Server.Init
 {
-    class SMImmuneStatusNotify : Packet
+    class SMInitChaosDungeonRewardCount : Packet
     {
-        public SMImmuneStatusNotify(Connection connection) : base(connection)
+        public SMInitChaosDungeonRewardCount(Connection connection) : base(connection)
         {
+            CompressionType = CompressionType.SNAPPY;
             OpCode = PacketFactory.ReverseLookup[GetType()];
         }
 
         public override void Deserialize()
         {
-            Data.WriteBytes(new byte[22]);
+            Data.WriteBytes(new byte[17]);
         }
 
         public override Task HandleAsync()

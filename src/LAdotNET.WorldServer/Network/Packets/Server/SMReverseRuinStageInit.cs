@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 
 namespace LAdotNET.WorldServer.Network.Packets.Server
 {
-    class SMImmuneStatusNotify : Packet
+    class SMReverseRuinStageInit : Packet
     {
-        public SMImmuneStatusNotify(Connection connection) : base(connection)
+        public SMReverseRuinStageInit(Connection connection) : base(connection)
         {
             OpCode = PacketFactory.ReverseLookup[GetType()];
         }
 
         public override void Deserialize()
         {
-            Data.WriteBytes(new byte[22]);
+            Data.WriteBytes(new byte[28]);
         }
 
         public override Task HandleAsync()
