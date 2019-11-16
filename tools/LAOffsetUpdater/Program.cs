@@ -169,61 +169,52 @@ namespace LAOffsetUpdater
 
             foreach (var _ref in references)
             {
-                //Console.WriteLine($"Processing {_ref.Value.Name } - address of string: {_ref.Key.ToString("X")}");
+                Console.WriteLine($"Processing {_ref.Value.Name } - address of string: {_ref.Key.ToString("X")}");
 
                 var strLen = _ref.Value.Name.Length * 2;
 
-                var search = (_ref.Key + strLen);
+                //var search = (_ref.Key + strLen); - old searching below string
 
-                bool found = false;
+                var search = _ref.Key;
+                var found = false;
                 var opcode = 0;
 
-                //INCREMENT BY 2 EACH TIME UNTIL WE HIT A NON ZERO
                 while (!found)
                 {
-                    if (process.ReadByte(search) != 0x00)
-                    {
-                        var opcodeAddr = process.ReadInt64(search);
+                    var b = process.ReadByte(search - 2);
 
-                        if (process.ReadByte(opcodeAddr) == 0xB8) // mov, opcode
+                    if (b != 0x00)
+                    {
+                        if(b == 0xF7)
                         {
-                            opcode = process.ReadInt32((int)(opcodeAddr - (long)process.Module.BaseAddress) + 0x1, process.Dump_MainModule); // add 1 to remove the mov byte
+                            search -= 6;
+
+                            var opcodeAddr = process.ReadInt64(search - 0x18);
+
+                            if (process.ReadByte(opcodeAddr) == 0xB8) // mov, opcode
+                            {
+                                opcode = process.ReadInt32((int)(opcodeAddr - (long)process.Module.BaseAddress) + 0x1, process.Dump_MainModule); // add 1 to remove the mov byte
+                                found = true;
+                            }
+
+                            //found = true;
                         }
-
-                        found = true;
                     }
-                    // Some addresses start with end with a zero so we need to compensate for that by checking if the next byte is also 0
-                    // If it is not, then the current search address is the correct address.
-                    else if (process.ReadByte(search + 0x1) != 0x00)
-                    {
-                        var opcodeAddr = process.ReadInt64(search);
 
-                        if (process.ReadByte(opcodeAddr) == 0xB8) // mov, opcode
-                        {
-                            opcode = process.ReadInt32((int)(opcodeAddr - (long)process.Module.BaseAddress) + 0x1, process.Dump_MainModule); // add 1 to remove the mov byte
-                        }
-
-                        found = true;
-                    }
-                    else
-                    {
-                        search += 0x2;
-                    }
+                    search -= 2;
                 }
-
-                //Console.WriteLine($"0x{opcode.ToString("X")}, {_ref.Value.Name}");
 
                 OpCode _oc = new OpCode(_ref.Value.Name);
                 _oc.Opcode = opcode;
 
                 _opCodes.Add(_oc);
-
             }
 
             foreach (var op in _opCodes)
             {
-                //fileOutput += "{ 0x" + op.Opcode.ToString("X") + ",  typeof(" + op.Name + ") },\n";
-                fileOutput += "{ 0x" + op.Opcode.ToString("X") + ",  \"" + op.Name + "\" },\n";
+                var smName = "SM" + op.Name.Substring(3);
+                //fileOutput += "{ 0x" + op.Opcode.ToString("X") + ",  \"" + op.Name + "\" },\n";
+                fileOutput += "0x" + op.Opcode.ToString("X") + ", " + smName + "\n";
             }
 
             File.WriteAllText(@".\opCodes_sm_" + version + ".txt", fileOutput);
