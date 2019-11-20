@@ -40,11 +40,15 @@ int WINAPI Hooks::hSend_Callback(SOCKET s, const char* buf, int sendLen, int fla
 {
 	int port = util::GetPortNumber(s);
 
-	LAPacket packet(settings, logger);
-	ByteBuffer buffer(sendLen);
-	buffer.putBytes(*(uint8_t**)(&buf), sendLen);
+	// TODO: HTTP
+	if(port != 10011 || port != 8888) 
+	{
+		LAPacket packet(settings, logger);
+		ByteBuffer buffer(sendLen);
+		buffer.putBytes(*(uint8_t**)(&buf), sendLen);
 
-	packet.Parse(&buffer, CLIENT, port);
+		packet.Parse(&buffer, CLIENT, port);
+	}
 
 	return pSend_Original(s, buf, sendLen, flags);
 }
@@ -61,7 +65,6 @@ int __stdcall Hooks::hWSASend_Callback(SOCKET s, LPWSABUF lpBuffers, DWORD dwBuf
 		{
 			for (DWORD i = 0; i < dwBufferCount; i++)
 			{
-				//PacketType pType = PacketType::Client;
 				DWORD bytesSent = *lpNumberOfBytesSent;
 				int port = util::GetPortNumber(s);
 

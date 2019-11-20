@@ -13,7 +13,6 @@ class Settings
 
 		// Ini Settings
 		bool LoggingEnabled;
-
 		bool RedirectConnections;
 		std::string RedirectIP;
 
@@ -21,6 +20,11 @@ class Settings
 		Counter* LoginCounter;
 		Counter* GameCounter;
 		Counter* WorldCounter;
+
+		// Packet Orders
+		int LoginOrder;
+		int GameOrder;
+		int WorldOrder;
 
 		// Opcodes
 		std::map<int, std::string> m_Opcodes;

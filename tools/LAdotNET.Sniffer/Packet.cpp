@@ -10,6 +10,9 @@ LAPacket::LAPacket(Settings* _settings, Logger* _logger)
 	CompressionFlag = 0;
 	IsEncrypted = false;
 
+	Order = 0;
+	DataSize = 0;
+
 	Data = nullptr;
 }
 
@@ -23,75 +26,99 @@ void LAPacket::Parse(ByteBuffer* buf, Origin sender, int port)
 		CompressionFlag = buf->getChar();
 		IsEncrypted = buf->getChar() ? true : false;
 
-		Data = new uint8_t[Size - 6];
-		buf->getBytes(Data, Size - 6);
+		DataSize = Size - 6;
+		Data = new uint8_t[DataSize];
+		buf->getBytes(Data, DataSize);
 
 		Name = GetPacketName();
 		Type = GetServerType(port);
+		Order = GetOrder();
 		Sender = sender;
 
 		if (IsEncrypted) 
 		{
-			if (Sender == SERVER) 
+			if (Sender == Origin::SERVER) 
 			{
 				Decrypt(Opcode);
 			}
 			else
 			{
-				int count = GetCounterType()->getCount();
-				Decrypt(count);
-				logger->WriteToConsole("Decrypting client packet with count [%i] \n", count);
+				Counter* _counter = GetCounterType();
+
+				if (Opcode == 0xB48E || Opcode == 0x3AED)
+				{
+					// Reset counter on first client packet of each connection (back to server select screen etc)
+					_counter->Reset();
+				}
+
+				Decrypt(_counter->getCount());
+
+				logger->WriteToConsole("Decrypting client packet with count [%i] \n", _counter->getCount());
+				_counter->Increase();
 			}
 		}
 
 		if (CompressionFlag == 2)
 			Decompress();
 
+		// Verbose Loggerino
 		logger->WriteToConsole("%s -> [%s] len[%i] op[0x%04X] compressed[%i] encrypted[%s] - requestSize[%i] \n",
 			sender ? "SERVER" : "CLIENT",
 			Name.c_str(),
-			Size,
+			DataSize,
 			Opcode,
 			CompressionFlag,
 			IsEncrypted ? "TRUE" : "FALSE",
 			buf->size()
 		);
 
-		// SAVE TO FILE
-		logger->WriteToFile(Size, Opcode, CompressionFlag, IsEncrypted, Data, Type, Name);
+		logger->WriteToFile(DataSize, Opcode, CompressionFlag, IsEncrypted, Data, Type, Name, Order);
+		util::hexdump(Data, DataSize);
 	}
 }
 
 void LAPacket::Decrypt(int seed)
 {
-	int dataLength = Size - 6;
-
-	for (int i = 0; i < dataLength; i++)
+	// Super insane encryption by Smilegate
+	for (int i = 0; i < DataSize; i++)
 	{
 		Data[i] ^= settings->XorKey[(seed & 0xFF) + 4];
 
 		seed++;
 	}
-
-	if(Sender == CLIENT)
-		GetCounterType()->Increase();
 }
 
 void LAPacket::Decompress()
 {
 	size_t result;
-	snappy_uncompressed_length(reinterpret_cast<const char*>(Data), Size - 6, &result);
+	auto res = snappy_uncompressed_length(reinterpret_cast<const char*>(Data), DataSize, &result);
 
-	uint8_t* newData = new uint8_t[result];
+	if (res == SNAPPY_OK) 
+	{
+		uint8_t* newData = new uint8_t[result];
 
-	snappy_uncompress((const char*)Data, Size - 6, (char*)newData, &result);
+		auto uncompressRes = snappy_uncompress((const char*)Data, DataSize, (char*)newData, &result);
+		if (uncompressRes == SNAPPY_OK)
+		{
+			delete[] Data;
 
-	delete[] Data;
+			DataSize = result - 16;
+			Data = new uint8_t[DataSize];
+			std::memcpy(Data, newData + 16, DataSize);
 
-	Data = new uint8_t[result];
-	std::memcpy(Data, newData, result);
+			logger->WriteToConsole("Decompressing packet [%s] size before[%i] size after[%i] \n", Name.c_str(), Size - 6, DataSize);
 
-	delete[] newData;
+			delete[] newData;
+		}
+		else
+		{
+			logger->WriteToConsole("Failed to decompress packet, snappy result [%d] \n", (int)uncompressRes);
+		}
+	}
+	else
+	{
+		logger->WriteToConsole("Failed to get uncompressed length, snappy result [%d] \n", (int)res);
+	}
 
 	//util::hexdump(Data, result);
 }
@@ -123,11 +150,34 @@ Counter* LAPacket::GetCounterType()
 {
 	switch (Type) 
 	{
-	case LOGINSERVER:
-		return settings->LoginCounter;
-	case GAMESERVER:
-		return settings->GameCounter;
-	case WORLDSERVER:
-		return settings->WorldCounter;
+		case LOGINSERVER:
+			return settings->LoginCounter;
+		case GAMESERVER:
+			return settings->GameCounter;
+		case WORLDSERVER:
+			return settings->WorldCounter;
 	}
+}
+
+int LAPacket::GetOrder()
+{
+	int order = 0;
+
+	switch (Type)
+	{
+		case LOGINSERVER:
+			order = settings->LoginOrder;
+			settings->LoginOrder++;
+			break;
+		case GAMESERVER:
+			order = settings->GameOrder;
+			settings->GameOrder++;
+			break;
+		case WORLDSERVER:
+			order = settings->WorldOrder;
+			settings->WorldOrder++;
+			break;
+	}
+
+	return order;
 }

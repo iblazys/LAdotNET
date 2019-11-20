@@ -10,6 +10,7 @@ class LAPacket {
 
 		ServerType GetServerType(int port);
 		Counter* GetCounterType();
+		int GetOrder();
 		std::string GetPacketName();
 
 	public:
@@ -18,10 +19,12 @@ class LAPacket {
 		uint8_t CompressionFlag;
 		bool IsEncrypted;
 		uint8_t* Data;
+		uint16_t DataSize;
 
 		ServerType Type;
 		std::string	Name;
 		Origin Sender;
+		int Order;
 
 		LAPacket(Settings* settings, Logger* logger);
 
