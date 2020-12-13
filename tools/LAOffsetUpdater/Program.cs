@@ -179,14 +179,17 @@ namespace LAOffsetUpdater
                 var found = false;
                 var opcode = 0;
 
+                if (_ref.Value.Name.Contains(" "))
+                    continue;
+
                 while (!found)
                 {
                     var b = process.ReadByte(search - 2);
 
                     if (b != 0x00)
                     {
-                        if(b == 0xF7)
-                        {
+                        //if(b == 0xF7)
+                        //{
                             search -= 6;
 
                             var opcodeAddr = process.ReadInt64(search - 0x18);
@@ -198,7 +201,7 @@ namespace LAOffsetUpdater
                             }
 
                             //found = true;
-                        }
+                        //}
                     }
 
                     search -= 2;

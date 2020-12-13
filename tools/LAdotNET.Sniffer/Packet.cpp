@@ -45,6 +45,7 @@ void LAPacket::Parse(ByteBuffer* buf, Origin sender, int port)
 			{
 				Counter* _counter = GetCounterType();
 
+				// TODO: Move these two opcodes to the ini file
 				if (Opcode == 0xB48E || Opcode == 0x3AED)
 				{
 					// Reset counter on first client packet of each connection (back to server select screen etc)
@@ -72,18 +73,23 @@ void LAPacket::Parse(ByteBuffer* buf, Origin sender, int port)
 			buf->size()
 		);
 
+		// TODO: Log Raw Packets
 		logger->WriteToFile(DataSize, Opcode, CompressionFlag, IsEncrypted, Data, Type, Name, Order);
 		util::hexdump(Data, DataSize);
 	}
 }
 
+/**
+ * Decrypts packet data
+ *
+ * @param seed opcode if server packet, sequence number if client packet
+ */
 void LAPacket::Decrypt(int seed)
 {
-	// Super insane encryption by Smilegate
+	// Super insane encryption by Smilegate - very very advanced
 	for (int i = 0; i < DataSize; i++)
 	{
 		Data[i] ^= settings->XorKey[(seed & 0xFF) + 4];
-
 		seed++;
 	}
 }

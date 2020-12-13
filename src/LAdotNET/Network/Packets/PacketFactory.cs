@@ -72,8 +72,6 @@ namespace LAdotNET.Network.Packets
                     ReverseLookup.Add(packetType, opcode);
                 }
             }
-
-            lines = null;
         }
 
         private static void CheckMissingOpcodes()

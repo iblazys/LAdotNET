@@ -1,4 +1,5 @@
 ﻿using DotNetty.Buffers;
+using DotNetty.Codecs;
 using DotNetty.Handlers.Logging;
 using DotNetty.Transport.Bootstrapping;
 using DotNetty.Transport.Channels;
@@ -42,6 +43,7 @@ namespace LAdotNET.Network
                     .Option(ChannelOption.SoReuseaddr, true) // mem optimization
                     .Option(ChannelOption.TcpNodelay, true)
                     .Option(ChannelOption.SoKeepalive, true)
+                    .Option(ChannelOption.SoRcvbuf, 4096) // ??
                     .Option(ChannelOption.Allocator, PooledByteBufferAllocator.Default)
 
                     .Handler(new LoggingHandler("ConsoleLogger", LogLevel.INFO))
@@ -50,6 +52,7 @@ namespace LAdotNET.Network
                         var pipeline = channel.Pipeline;
 
                         //pipeline.AddLast(new PacketDecoder());
+                        pipeline.AddFirst(new LengthFieldBasedFrameDecoder(ByteOrder.LittleEndian, ushort.MaxValue, 0, 2, -2, 0, false));
                         pipeline.AddLast(new PacketHandler());
                         pipeline.AddLast(new PacketEncoder());
                     }));

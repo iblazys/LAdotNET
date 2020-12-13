@@ -1,0 +1,25 @@
+# Loginserver Packets
+
+0x1, CMVersionCheckRequest
+0xB48E, CMLoginRequest
+0x43CA, CMWorldSelectRequest
+
+
+# Shared GS/WS Packets
+
+0x3AED, CMSlideNoticeUpdate
+0x3, CMPing
+
+# Gameserver Packets
+
+0x947E, CMPCNameCheckRequest
+0x25DA, CMPCCreateRequest
+0x9897, CMPCSelectRequest
+
+0x5B84, CMUnknownPacket1
+0xA2F7, CMUnknownPacket2
+
+# Worldserver Packets
+
+0x6CA3, CMSetLoadingScreenGraphic
+0x2D75, CMMove

@@ -18,7 +18,8 @@ bool Settings::Load()
 	}
 
 	// Settings
-	LoggingEnabled = reader.GetBoolean("Logging", "Enabled", false);
+	LoggingEnabled = reader.GetBoolean("Logging", "EnableConsole", false);
+	LogRawPackets = reader.GetBoolean("Logging", "LogRawPackets", false);
 	RedirectConnections = reader.GetBoolean("Connections", "Redirect", false);
 	RedirectIP = reader.Get("Connections", "RedirectIP", "127.0.0.1");
 

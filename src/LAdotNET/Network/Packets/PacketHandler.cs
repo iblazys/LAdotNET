@@ -34,7 +34,22 @@ namespace LAdotNET.Network.Packets
 
                 if (!PacketFactory.Packets.ContainsKey(opcode))
                 {
-                    Logger.Error($"Unknown packet recieved! - OP: 0x{opcode.ToString("X")}, L: {length}");
+                    Logger.Warn($"Unknown packet recieved! - OP: 0x{opcode.ToString("X")}, L: {length}");
+
+                    // TEMP - USED FOR SKIPPING UNIMPLEMENTED ENCRYPTED PACKETS
+
+                    message.SkipBytes(1); // skip compression type
+
+                    if (message.ReadByte() == 1)
+                    {
+                        var count = Connection.Counter.Count;
+                        Connection.Counter.Increase();
+
+                        Logger.Warn($"Increased counter from {count} to {Connection.Counter.Count}");
+                    }
+
+                    // END TEMP
+
                     return;
                 }
 

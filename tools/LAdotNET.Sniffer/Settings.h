@@ -13,6 +13,7 @@ class Settings
 
 		// Ini Settings
 		bool LoggingEnabled;
+		bool LogRawPackets;
 		bool RedirectConnections;
 		std::string RedirectIP;
 

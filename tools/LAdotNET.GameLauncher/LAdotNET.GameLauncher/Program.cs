@@ -39,6 +39,8 @@ namespace LAdotNET.GameLauncher
                     Console.WriteLine("Attached to LOSTARK.exe");
                     Console.WriteLine("Injecting x64lahook.dll");
 
+                    Thread.Sleep(1500);
+
                     // FULL PATH TO DLL FILE
                     m.InjectDLL("E:\\Games\\LOSTARK\\x64lahook.dll");
 

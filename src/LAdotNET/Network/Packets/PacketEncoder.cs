@@ -19,12 +19,11 @@ namespace LAdotNET.Network.Packets
             Logger.Debug("[S] - {0} - op[0x{1}] - length[{2}] - encrypted[{3}] - compression[{4}]",
                 packet.GetType().Name,
                 packet.OpCode.ToString("X"),
-                packet.Data.ReadableBytes + 6,
+                packet.Length,
                 packet.IsEncrypted.ToString(),
                 packet.CompressionType.ToString());
 
             Logger.Debug($"\n{HexUtils.Dump(packet.Data)}");
-            // DEBUG
 
             if (packet.CompressionType != CompressionType.NONE)
                 packet.Compress(); // TODO: LZ4
@@ -33,13 +32,17 @@ namespace LAdotNET.Network.Packets
                 packet.Encrypt();
 
             var header = Unpooled.Buffer();
-            
+
             packet.Length = (ushort)(packet.Data.ReadableBytes + 6); // current packet size + header length
+            //packet.Length = (ushort)(packet.Data.ReadableBytes + 10); // 10 BYTE HEADER FOR RU
 
             header.WriteUnsignedShortLE((ushort)packet.Length);
             header.WriteUnsignedShortLE(packet.OpCode);
             header.WriteByte((byte)packet.CompressionType); // TODO: LZ4 (Flag: 1)
             header.WriteByte(packet.IsEncrypted ? 1 : 0); // Crypt Flag
+
+            // RU TEST
+            //header.WriteIntLE(0);
 
             base.WriteAsync(context, header);
 
