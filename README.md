@@ -3,7 +3,7 @@
 LAdotNET is a project I started back in November 2019. I haven't had the time nor drive to work on it anymore.
 
 ## Screenshots
- [image text](https://cloud.githubusercontent.com/assets/711743/25648417/57cd2c0c-2fe9-11e7-8753-b60ea2656faf.png)
+ [image](https://cloud.githubusercontent.com/assets/711743/25648417/57cd2c0c-2fe9-11e7-8753-b60ea2656faf.png)
 
 ## Client
 
