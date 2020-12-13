@@ -1,12 +1,7 @@
 # LAdotNET - LOST ARK KR Emulator
 
 LAdotNET is a project I started back in November 2019. I haven't had the time nor drive to work on it anymore.
-
-## Screenshots
-![image](https://i.imgur.com/017E2BR.jpeg)
-![image](https://imgur.com/OzVZLOL.jpeg)
-![image](https://imgur.com/WpM58KB.jpeg)
-![image](https://imgur.com/OzVZLOL.jpeg)
+Screenshots and more info below.
 
 ## Client
 
@@ -39,6 +34,12 @@ I have also included a sniffer that might work if updated to the new client? I d
 The emulator supports KR client 1.6.4.1 which I will have uploaded by the time this goes public.
 
 This was purely for learning purposes only, I love messing around with networking, just wanted to throw it up on Github instead of throwing it away.
+
+## Screenshots
+![image](https://i.imgur.com/017E2BR.jpeg)
+![image](https://imgur.com/OzVZLOL.jpeg)
+![image](https://imgur.com/WpM58KB.jpeg)
+![image](https://imgur.com/AZlj1D9.jpeg)
 
 ## License
 [GNU](https://www.gnu.org/licenses/)
