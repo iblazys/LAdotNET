@@ -4,6 +4,9 @@ LAdotNET is a project I started back in November 2019. I haven't had the time no
 
 ## Screenshots
 ![image](https://i.imgur.com/017E2BR.jpeg)
+![image](https://imgur.com/OzVZLOL.jpeg)
+![image](https://imgur.com/WpM58KB.jpeg)
+![image](https://imgur.com/OzVZLOL.jpeg)
 
 ## Client
 
