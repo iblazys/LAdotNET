@@ -1,6 +1,30 @@
-# LAdotNET - LOSTARK KR Emulator
+# LAdotNET - LOST ARK KR Emulator
 
-This is an emulator for Lost Ark that I started to develop back in November 2019. I got sidetracked with other things in life and was not able to continue working on it.
+LAdotNET is a project I started back in November 2019. I haven't had the time nor drive to work on it anymore.
+
+## Screenshots
+
+
+## Client
+
+Supports KR client version 1.6.4.1
+You will be able to find it around the net.
+
+## Information
+
+Set your config files up like so:
+```python
+loginserver/
+ - config/
+  - loginserver_config.yml
+  - network_config.yml
+  
+gameserver/
+ - config/
+  - network_config.yml
+```
+
+Worldserver does not have any config.
 
 You are able to login, create a character and walk around in the first zone.
 Most of the packet data is hardcoded as I was just in the process of getting everything set up but there is a solid base here.
@@ -11,24 +35,7 @@ I have also included a sniffer that might work if updated to the new client? I d
 
 The emulator supports KR client 1.6.4.1 which I will have uploaded by the time this goes public.
 
-This was purely for learning purposes only, I love messing around with networking.
-Sorry if this is a little unintuitive, I wanted to throw it up on github instead of throwing it away.
+This was purely for learning purposes only, I love messing around with networking, just wanted to throw it up on Github instead of throwing it away.
 
-# Info
-
-Make sure x64lahook.dll and x64lahook.ini are in the same folder (LOSTARK base folder)
-
-Inject x64lahook.dll and you should be able to connect to the server.
-
-Set the config files up like so:
-
-loginserver/
- - config/
-  - loginserver_config.yml
-  - network_config.yml
-  
-gameserver/
- - config/
-  - network_config.yml
-  
-Worldserver does not have config, stopped before I got that far.
+## License
+[GNU](https://www.gnu.org/licenses/)
