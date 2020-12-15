@@ -1,6 +1,6 @@
 # LAdotNET - LOST ARK KR Emulator
 
-LAdotNET is a project I started back in November 2019. I haven't had the time nor drive to work on it anymore.
+LAdotNET is a project I stopped working on back in November 2019. I haven't had the time nor drive to work on it anymore.
 Screenshots and more info below.
 
 ## Client
